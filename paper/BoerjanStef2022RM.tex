@@ -1,0 +1,128 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachelorproef
+%==============================================================================%
+% Compileren in TeXstudio:
+%
+% - Zorg dat Biber de bibliografie compileert (en niet Biblatex)
+%   Options > Configure > Build > Default Bibliography Tool: "txs:///biber"
+% - F5 om te compileren en het resultaat te bekijken.
+% - Als de bibliografie niet zichtbaar is, probeer dan F5 - F8 - F5
+%   Met F8 compileer je de bibliografie apart.
+%
+% Als je JabRef gebruikt voor het bijhouden van de bibliografie, zorg dan
+% dat je in ``biblatex''-modus opslaat: File > Switch to BibLaTeX mode.
+
+\documentclass{hogent-article}
+
+\usepackage{lipsum} % Voor vultekst
+
+%------------------------------------------------------------------------------
+% Metadata over het artikel
+%------------------------------------------------------------------------------
+
+%---------- Titel & auteur ----------------------------------------------------
+
+\PaperTitle{Optimalisatie van bosbrandpreventie en -detectie met behulp van drones en artificiële intelligentie}
+% Dit is typisch de opdracht en het vak waarvoor dit artikel geschreven is, bv.
+% ``Verslag onderzoeksproject Onderzoekstechnieken 2018-2019''
+\PaperType{Paper Research Methods: onderzoeksvoorstel}
+
+\Authors{Stef Boerjan\textsuperscript{1}} % Authors
+
+% Als het hier effectief gaat om een voorstel voor de bachelorproef, dan ben je
+% hier verplicht de naam van je co-promotor in te vullen. Zoniet, dan kan je het
+% leeg laten.
+\CoPromotor{}
+
+% Contactinfo: Geef hier de contactgegevens van elke auteur van het artikel (en
+% indien van toepassing ook van de co-promotor).
+\affiliation{
+  \textsuperscript{1} \href{mailto:stef.boerjan@student.hogent.be}{stef.boerjan@student.hogent.be}}
+
+%---------- Abstract ----------------------------------------------------------
+
+\Abstract{
+Bosbranden waren en zijn nog steeds een groot probleem voor verschillende landen over de hele wereld. Het beheersen van zo'n grootschalige brand is zeer uitdagend. Zulke branden veroorzaken verlies van mensen, dieren, vegetatie, enzovoort. De huidige state of the art voldoet niet meer en nieuwe bosbrandpreventie en -detectie methoden worden overvloedig onderzocht. In dit onderzoek/proof-of-concept wordt bestudeerd of door AI-bestuurde drones een optimale methode is. Dit met als doelstelling bij te dragen aan de globale zoektocht naar de meest optimale bosbrandpreventie en -detectie methode. Het onderzoek gebeurt via een technische analyse van vakliteratuur, samen met het toelichten van beschikbare hardware, software, datasets, algoritmes en tot slot de verduidelijking van de bekomen resultaten. Er wordt verwacht dat AI-bestuurde drones een mogelijke optimale methode is en met behulp van sensoren en camera's een grote bijdrage kunnen leveren tot de preventie en detectie van bosbranden.
+}
+
+%---------- Onderzoeksdomein en sleutelwoorden --------------------------------
+
+\Keywords{Machineleertechnieken en kunstmatige intelligentie; bosbranddetectie; drones}
+\newcommand{\keywordname}{Sleutelwoorden} % Defines the keywords heading name
+
+%---------- Titel, inhoud -----------------------------------------------------
+
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+\maketitle % Print the title and abstract box
+\tableofcontents % Print the contents section
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%------------------------------------------------------------------------------
+% Hoofdtekst
+%------------------------------------------------------------------------------
+
+\section{Inleiding}
+De huidige milieuomstandigheden leiden hedendaags tot frequentere en ernstigere bosbranden. Volgens de European Forest Fire Information System is er in 2020 in Europa, het Midden-Oosten en Noord-Afrika alleen al 1.075.145 hectaren bosgrond afgebrand \autocite{Centre2021}. Het bewaken van de potentiële risicogebieden en zo vroege detectie van brand garanderen, is noodzakelijk voor het minimaliseren van de reactietijd en de schade en kosten van de brandbestrijding in te perken \autocite{Alkhatib2014}. Studies geven aan dat de komende decennia steeds meer bosbranden zullen ontstaan. Dit zal resulteren in zowel schade aan de economie en het milieu, alsook een stijgend verlies aan mensenlevens. Om die reden wordt het steeds belangrijker om bosbewaking en -controle te optimaliseren en op die manier efficiënt bosbranden in te perken \autocite{Cruz2016}. 
+De belanghebbenden en beïnvloeders in Australië, Canada, de VS en Europa baseren zich op de waarschijnlijkheid van menselijke waarnemingen of de voorspellingen van bosbranden. Dit is echter geen feilloze oplossing welke deze branden kan inperken of beëindigen \autocite{Alkhatib2014}. 
+\\ 
+
+In dit onderzoek wordt het gebruik van AI-gestuurde drones beschreven als optimale methode voor bosbrandpreventie en -detectie.
+
+Het doel van dit onderzoek is om een introductie te geven tot de problematiek en het beschrijven van de huidige stand van zaken op vlak van bosbrandpreventie en -detectie. Vervolgens volgt er een analyse van wetenschappelijke teksten, waaruit alle voordelen van door AI-bestuurde drones voorkomen. Aansluitend worden de grootste valkuilen aangehaald. Daaropvolgend wordt er op zoek gegaan naar beschikbare hardware, software, datasets en algoritmes. Tot slot volgt een verduidelijking van de bekomen resultaten met als uiteindelijke doel advies te geven en aan te tonen dat AI-gestuurde drones een van de meest optimale keuzemogelijkheden zijn.
+
+\section{Overzicht literatuur}
+In het pre-suppressieproces voor bosbranden is vroegtijdige detectie noodzakelijk. Op die manier kunnen bestrijdingseenheden tijdig de brand bereiken, wat de bestrijdingskosten en schade aanzienlijk zullen beperken \autocite{Breejen2001}. Bij bosbranddetectie worden drie verschillende categorieën van op grote schaal gebruikte systemen onderscheiden om actieve branden op te sporen. Deze kunnen vanop de grond (terrestrische systemen), vanuit de lucht (luchtsystemen) of uit de ruimte (satellietsystemen) opereren \autocite{Breejen2001, Barmpoutis2020}. Meestal wordt er gebruik gemaakt van zichtbare, IR- of multispectrale sensoren, waarna de gegevens vervolgens verwerkt worden door middel van machineleermethoden \autocite{Barmpoutis2020}.
+Bosbranden werden traditioneel aan de hand van bemande observatietorens opgespoord, maar deze aanpak wordt tegenwoordig als inefficiënt beschouwd. Dit systeem is namelijk gevoelig  aan menselijke fouten en vermoeidheid, waarna al snel op nieuwe systemen overgeschakeld werd \autocite{Barmpoutis2020, Alkhatib2014}. 
+\\
+
+Bij terrestrische systemen, wordt er gewoonlijk gebruik gemaakt van sensoren in wachttorens en op hoge uitkijkpunten voor het monitoren van bosbranden. Zowel kleurbeelden door optische camera’s als thermische straling door IR-beeldvormingssensoren kunnen aangewend worden. Tegenwoordig worden de vroegtijdige detectiesystemen waarbij kleur- en bewegingsinformatie gecombineerd worden, vaker aangewend \autocite{Barmpoutis2020}. 
+Recent wordt er steeds meer gebruik gemaakt van camerabewaking en draadloze sensorennetwerken voor het detecteren van bosbranden. Op die manier werden onder andere optical sensors en digital camera’s, samen met beeldverwerking en industriële computers, gebruikt voor het ontwikkelen van een systeem voor optische, geautomatiseerde vroegtijdige detectie van branden. Op die manier wordt een beeld verkregen, bestaande uit een aantal pixels. De verwerkingseenheid zal vervolgens de bewegingen in de beelden en het aantal pixels waarop vuurgloed of rook te zien is, nagaan. Deze resultaten worden dan doorgestuurd naar een algoritme, welke uiteindelijk de beslissing neemt of er al dan niet alarm geslagen moet worden bij de operator. Omdat het noodzakelijk is ook de locatie door te geven, wordt het grotendeel van de optische systemen voorzien van geografische kaarten \autocite{Alkhatib2014}. 
+Aangezien de energie van beginnende bosbranden zich voornamelijk op de grond, in de brandende zone, concentreert én er zich nauwelijks energie in de vlam bevindt, kunnen infrarood- en ultravioletdetectoren een directe zichtlijn op de brandende zone van de brand weergeven. Deze kunnen de energie van de vlam detecteren. Dit in tegenstelling tot zichtbaar licht, welke de rookpluim detecteert \autocite{Breejen2001}. Deze sensoren koppelen kenmerken die verband houden met de fysische eigenschappen van rook en vlammen, zoals bijvoorbeeld beweging, kleur, ruimtelijke, spectrale, temporelen en textuurkenmerken. Deze detectiemethode heeft echter kans op hoge vals alarm percentages. Dit kan verklaard worden met het feit dat de kleur-gebaseerde informatie in het merendeel van de gevallen insufficiënt is voor de vroegtijdige en robuuste branddetectie  \autocite{Barmpoutis2020}.
+Het gebruik van conventionele camera’s kan opportuun zijn voor bewakingstaken in real-time. Deze worden voornamelijk op torens geïnstalleerd en kunnen zo een continue sequentie van videoframes van een bewaakt gebied leveren \autocite{Cruz2016}. Verder wordt er door de autoriteiten ook gebruik gemaakt van onder andere gecontroleerde verbranding en brandweersvoorspellingen als branddetectie- en brandbestrijdingsmethoden \autocite{Alkhatib2014}.
+
+Terrestrische vaste beeldvormingssystemen hebben echter een beperkte capaciteit om uitgestrekte gebieden te bewaken \autocite{Cruz2016}. Ze kunnen zowel rook als vlammen detecteren, maar vaak is het onhaalbaar om tijdig een bosbrand waar te nemen met systemen gemonteerd op een uitkijktoren of op de grond \autocite{Barmpoutis2020}. Verder kunnen deze ook door vegetatie of topografie gehinderd worden \autocite{Breejen2001}. \\
+
+Uit het verleden blijkt reeds dat bewaking met vliegtuigen en helikopters prijzig kan uitdraaien en de kans op ongevallen bij brand toeneemt. Om deze reden opteert men bij luchtsystemen voor het gebruik van drones, meer specifiek; Unmanned Aerial Systems (UAS’s) \autocite{Cruz2016}. Deze onbemande vliegtuigen kunnen autonoom bestuurd worden en een nauwkeurigere waarneming van de brand van bovenaf bieden, alsook een groter gebied bewaken. UAS’s maken gebruik van optische of infrarood camera’s waardoor beelden met ultrahoge resolutie vastgelegd kunnen worden en zij ook ’s nachts gebruikt kunnen worden \autocite{Cruz2016, Barmpoutis2020}. Bovendien kunnen de drones ontoegankelijke locaties bereiken zonder mensenlevens in gevaar te brengen \autocite{Cruz2016}. Deze technologie is nagenoeg ideaal, maar de vliegtuigen hebben vaak een beperkte vliegtijd en zijn sterk onderhevig aan de weersomstandigheden \autocite{Barmpoutis2020}.
+\\
+
+Meer recentelijk werden ook satellieten ingezet om bosbranden op aarde op te sporen en te observeren \autocite{Alkhatib2014, Barmpoutis2020}. Zij worden met succes gebruikt bij het opsporen van bosbranden, vooral omdat ze een groot gebied bestrijken. Aangezien satellietsystemen een slechte ruimtelijke versus temporele resolutie bezitten, zijn zij vaak niet geschikt voor real-time detectie van actieve bosbranden \autocite{Barmpoutis2020, Cruz2016}. 
+Bovendien brengt het gebruik van satellieten grote kosten met zich mee en bestaat de mogelijkheid dat de resolutie van de beelden beïnvloed wordt door slechte weersomstandigheden
+\autocite{Chowdary2018}.
+\\
+
+Bij bosbranden zijn terrestrische systemen over het algemeen efficiënter als rekening gehouden wordt met de reactietijd en nauwkeurigheidspercentages. Een hoge ruimtelijke resolutie wordt bereikt, maar ze bieden slechts een beperkte dekking door hun vaste posities. Voor dit probleem kunnen grote netwerken van sensoren op de grond een oplossing bieden, om zo het dekkingsgebied te verruimen. Bij dit systeem moet echter rekening gehouden worden met het benodigde aantal sensoren, de complexiteit en de kosten die hieraan verbonden zijn \autocite{Barmpoutis2020}. 
+Het is reeds duidelijk dat lucht- en satellietsystemen een betere dekking bieden, maar deze technieken kennen eveneens nadelen. Het is namelijk lastig om hiermee de aanvang van  oppervlaktebranden doeltreffend te volgen \autocite{Alkhatib2014}.
+\\
+
+Daar er nog steeds onderzoek naar state-of-the-art methodologieën gebeurt, kan besloten worden dat de behoefte aan doeltreffendere systemen nog steeds belangstelling wekt \autocite{Moumgiakmas2021}.
+
+\section{Methodologie}
+Het onderzoek houdt vijf fasen in. De eerste fase is een introductie over de problematiek. Dit wordt gerealiseerd door een grondige studie van vakliteratuur, zoals wetenschappelijke teksten of blogs. Hieruit volgt een tekst dat alle vereisten aanhaalt voor een optimale oplossing. Deze fase heeft een geschatte duurtijd van twee weken.
+
+De tweede fase houdt een analyse in van wetenschappijke teksten, met als resultaat een uitgebreide tekst over de voordelen van door AI-bestuurde drones voor bosbrandpreventie en -detectie, in vergelijking met eerder aangehaalde methoden. 
+Hiervoor is twee weken genoeg.
+
+De derde fase is opnieuw een beschrijving, maar dan over de valkuilen van AI-geautomatiseerde drones in het kader van bosbrandpreventie en -detectie.
+Deze fase van het onderzoek brengt alle mogenlijke tekortkomingen in kaart.
+Ook voor deze fase is twee weken voldoende.
+
+De vierde en grootste fase bestaat uit het toelichten van de beschikbare hardware, software, datasets en algortimes. Hierbij wordt er gezocht naar de meest geschikte hardware waarbij er nauwkeurig afgewogen moet worden tussen kosten en functionaliteit. Vervolgens wordt er een veldonderzoek uitgevoerd om, naargelang de vereisten, de meest geschikte software te achterhalen. Tot slot worden de populairste datasets en meest geschikte algoritmes in kaart gebracht.
+Omdat in deze fase lange en complexe teksten onder de loep worden genomen,  bedraagt de geschatte duurtijd vier weken.
+
+
+De vijfde en laatste fase van dit onderzoek bevat een verduidelijking van de bekomen resultaten, met als ultieme doel te bewijzen dat het voorgestelde concept, AI-gestuurde drones in het kader van bosbrandpreventie en -detectie een optimale methode is. De geschatte duurtijd van deze fase bedraagt drie weken.
+
+\section{Verwachte conclusies}
+Er wordt verwacht dat AI-gestuurde drones een betaalbare, toepasbare en dus zeer optimale methode is voor bosbrandpreventie en -detectie. Dit sluit niet uit dat in sommige gevallen andere methoden niet geschikter zijn. Dit zal afhangen van de effectieve kostprijs en doeltreffendheid van de software-implementatie. Indien dit geweten is voor alle opties kan er pas vergeleken worden.
+
+%------------------------------------------------------------------------------
+% Referentielijst
+%------------------------------------------------------------------------------
+
+
+\phantomsection
+\printbibliography[heading=bibintoc]
+\footnote{https://github.com/stefboerjan/rm-2122-paper-rmboerjanstef}
+\end{document}
